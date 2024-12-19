@@ -10,6 +10,7 @@ class CustomButton extends StatelessWidget {
     required this.buttonText,
     this.fontSize,
     this.fontFamily,
+    this.onPressed,
   });
   final Color backgroundColor;
   final Color textColor;
@@ -17,13 +18,14 @@ class CustomButton extends StatelessWidget {
   final String buttonText;
   final double? fontSize;
   final String? fontFamily;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 48,
       child: TextButton(
-          onPressed: () {},
+          onPressed: onPressed,
           style: TextButton.styleFrom(
               backgroundColor: backgroundColor,
               shape: RoundedRectangleBorder(

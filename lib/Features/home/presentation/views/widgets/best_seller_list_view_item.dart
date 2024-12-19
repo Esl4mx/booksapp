@@ -1,6 +1,7 @@
 import 'package:booksapp/Features/home/data/models/book_model/book_model.dart';
 import 'package:booksapp/Features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:booksapp/constants.dart';
+import 'package:booksapp/core/utlis/app_router.dart';
 import 'package:booksapp/core/utlis/assets.dart';
 import 'package:booksapp/core/utlis/styles.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +16,17 @@ class BookListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push("/bookDetailsView");
+        GoRouter.of(context).push(
+          AppRouter.bookDetailsViewRoute,
+          extra: book,
+        );
       },
       child: SizedBox(
         height: 125,
         child: Row(
           children: [
-            CustomBookImage(imageUrl: book.volumeInfo.imageLinks.thumbnail),
+            CustomBookImage(
+                imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? ""),
             const SizedBox(
               width: 30,
             ),
